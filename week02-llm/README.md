@@ -25,3 +25,13 @@ They use tools to obtain information.
 
 Artifact:
 First IAM analysis toolkit.
+
+---
+Task: 
+
+Agent calculate
+1. Orphaned accounts
+2. Dormant accounts
+3. accounts with unusual activity
+4. target identity system connections
+5. Daily JML completion time
