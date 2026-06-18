@@ -35,3 +35,14 @@ Agent calculate
 3. accounts with unusual activity
 4. target identity system connections
 5. Daily JML completion time
+
+## Nugget 007
+
+Learned:
+- Tool selection
+- Routing
+- LLM decision making
+
+Insight:
+The LLM does not need to do the work.
+Its job can be deciding which tool should do the work.
