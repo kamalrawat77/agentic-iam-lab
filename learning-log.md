@@ -50,4 +50,28 @@ Artifact:
 
 Questions:
 ...How to put csv in collab. Answer put in Content folder
+## Nugget 004
 
+Learned:
+- API keys
+- LLM calls
+- Prompt engineering basics
+- Gemini SDK
+
+Artifact:
+- First AI interaction from Python
+
+Questions:
+.Is the calling the LLM function same for all type of LLMS. Is it reusable for all and we just change the key and model?
+
+Observation:
+
+LLMs are becoming interchangeable.
+
+The durable skills are:
+- Python
+- Data processing
+- Tool calling
+- RAG
+- Agent workflows
+- Evaluation
