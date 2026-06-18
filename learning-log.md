@@ -113,4 +113,19 @@ Learned:
 
 Insight:
 The LLM does not need to do the work.
+
+## Nugget 008
+LLM + Tools
+
+## Nugget 009
+
+Learned:
+- Multi-step agent flow
+- Tool execution
+- Result interpretation
+
+Insight:
+The LLM can be used twice:
+1. To decide what to do
+2. To explain what happened
 Its job can be deciding which tool should do the work.
