@@ -11,3 +11,17 @@ Artifact:
 
 Questions:
 ...
+
+## Nugget 005
+
+Learned:
+- Functions
+- Reusable tools
+- Report generation
+
+Key Insight:
+Agents do not magically know things.
+They use tools to obtain information.
+
+Artifact:
+First IAM analysis toolkit.
