@@ -36,3 +36,18 @@ print(f"Enabled Users: {enabled_count}")
 
 - Also explain  departments[dept] = departments.get(dept, 0) + 1
 
+## Nugget 003
+
+Learned:
+- Pandas
+- DataFrames
+- Reading CSV files
+- Filtering rows
+- value_counts()
+
+Artifact:
+- First real CSV analysis
+
+Questions:
+...How to put csv in collab. Answer put in Content folder
+
