@@ -149,3 +149,13 @@ Learned:
 
 Insight:
 Production agents must expect bad outputs and recover gracefully.
+
+## Nugget 012
+
+Learned:
+- Agent memory
+- Session state
+- Conversation history
+
+Insight:
+Agents become significantly more useful when they can remember prior interactions.
