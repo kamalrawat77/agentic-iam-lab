@@ -129,3 +129,13 @@ The LLM can be used twice:
 1. To decide what to do
 2. To explain what happened
 Its job can be deciding which tool should do the work.
+
+## Nugget 010
+
+Learned:
+- Planning
+- Multi-tool reasoning
+- Information gathering
+
+Insight:
+An agent should decide what information it needs before deciding what answer to give.
