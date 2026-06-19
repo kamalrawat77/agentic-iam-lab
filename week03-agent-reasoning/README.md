@@ -49,3 +49,13 @@ Learned:
 
 Insight:
 Production AI systems often use deterministic business rules for decisions and LLMs for explanations.
+
+## Nugget 015
+
+Learned:
+- Evidence-based reasoning
+- Grounding
+- Supported conclusions
+
+Insight:
+Production AI systems should explain conclusions using evidence rather than intuition.
