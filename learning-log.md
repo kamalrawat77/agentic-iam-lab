@@ -171,3 +171,13 @@ Learned:
 
 Insight:
 Business value comes from interpreting data, not merely reporting it.
+
+## Nugget 014
+
+Learned:
+- Risk scoring
+- Business rules
+- Classification
+
+Insight:
+Production AI systems often use deterministic business rules for decisions and LLMs for explanations.
