@@ -29,3 +29,13 @@ Learned:
 
 Insight:
 Agents become significantly more useful when they can remember prior interactions.
+
+## Nugget 013
+
+Learned:
+- Observations
+- Insight generation
+- Prompt refinement
+
+Insight:
+Business value comes from interpreting data, not merely reporting it.
