@@ -1,21 +1,21 @@
 [
   {
     "investigation_id": 1,
-    "date": "2026-06-21",
+    "date": "2026-06-19",
     "dormant_accounts": 70,
     "inactive_approvers": 35,
     "sla_compliance": 72
   }, 
   {
     "investigation_id": 2,
-    "date": "2026-06-22",
+    "date": "2026-06-20",
     "dormant_accounts": 75,
     "inactive_approvers": 25,
     "sla_compliance": 70
   }, 
   {
     "investigation_id": 3,
-    "date": "2026-06-22",
+    "date": "2026-06-21",
     "dormant_accounts": 65,
     "inactive_approvers": 25,
     "sla_compliance": 70
