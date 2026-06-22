@@ -242,6 +242,16 @@ Insight:
 A conclusion without confidence is incomplete. Production systems communicate both the answer and how strongly they believe it.
 Great agents challenge their own answers.
 
+## Nugget 021
+
+Learned:
+- Evidence quality
+- Evidence sufficiency
+- Data completeness
+
+Insight:
+Strong conclusions require not just evidence, but enough high-quality evidence.
+
 ## Nugget 022
 
 Learned:
