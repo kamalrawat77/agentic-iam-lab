@@ -16,3 +16,13 @@ Learned:
 
 Insight:
 Good agents know when they do not have enough information to answer confidently.
+
+## Nugget 018
+
+Learned:
+- Planner Agent
+- Executor Agent
+- Dynamic execution
+
+Insight:
+Separating planning from execution creates more reliable and maintainable agents.
