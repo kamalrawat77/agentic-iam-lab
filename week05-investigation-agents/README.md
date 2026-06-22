@@ -27,3 +27,14 @@ Learned:
 
 Insight:
 Individual agent components become much more valuable when connected into a repeatable workflow.
+
+## Nugget 025
+
+Learned:
+- State management
+- Trend analysis
+- Historical comparisons
+
+Insight:
+Point-in-time metrics provide observations.
+State and history provide insight.
