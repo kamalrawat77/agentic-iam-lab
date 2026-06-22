@@ -4,27 +4,35 @@
     "date": "2026-06-19",
     "dormant_accounts": 70,
     "inactive_approvers": 35,
-    "sla_compliance": 72
+    "sla_compliance": 72,
+    "root_cause": "Inactive Approvers",
+    "confidence": "HIGH"
   }, 
   {
     "investigation_id": 2,
     "date": "2026-06-20",
     "dormant_accounts": 75,
     "inactive_approvers": 25,
-    "sla_compliance": 70
+    "sla_compliance": 70,
+    "root_cause": "Inactive Approvers",
+    "confidence": "HIGH"
   }, 
   {
     "investigation_id": 3,
     "date": "2026-06-21",
     "dormant_accounts": 65,
     "inactive_approvers": 25,
-    "sla_compliance": 70
+    "sla_compliance": 70,
+    "root_cause": "Inactive Approvers",
+    "confidence": "HIGH"
   }, 
   {
     "investigation_id": 4,
     "date": "2026-06-22",
     "dormant_accounts": 85,
     "inactive_approvers": 15,
-    "sla_compliance": 72
+    "sla_compliance": 72,
+    "root_cause": "Inactive Approvers",
+    "confidence": "HIGH"
   }
 ]
