@@ -291,4 +291,14 @@ Learned:
 
 Insight:
 Point-in-time metrics provide observations.
+
+## Nugget 026
+
+Learned:
+- Persistent memory
+- Saving investigations
+- Retrieving historical state
+
+Insight:
+An agent becomes significantly more valuable when it can remember past investigations and reason across time.
 State and history provide insight.
