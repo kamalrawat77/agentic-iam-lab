@@ -220,3 +220,14 @@ Learned:
 
 Insight:
 Separating planning from execution creates more reliable and maintainable agents.
+
+## Nugget 019
+
+Learned:
+- Critic agents
+- Evidence validation
+- Confidence assessment
+
+Insight:
+Good agents generate answers.
+Great agents challenge their own answers.
