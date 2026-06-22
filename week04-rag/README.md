@@ -37,3 +37,13 @@ Learned:
 Insight:
 Good agents generate answers.
 Great agents challenge their own answers.
+
+## Nugget 020
+
+Learned:
+- Confidence scoring
+- Evidence strength
+- Rule-based confidence
+
+Insight:
+A conclusion without confidence is incomplete. Production systems communicate both the answer and how strongly they believe it.
