@@ -17,3 +17,13 @@ Learned:
 
 Insight:
 A good investigator ranks possible causes instead of jumping to conclusions.
+
+## Nugget 024
+
+Learned:
+- Investigation workflows
+- End-to-end reasoning pipelines
+- Hypothesis generation and ranking
+
+Insight:
+Individual agent components become much more valuable when connected into a repeatable workflow.
