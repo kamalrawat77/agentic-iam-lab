@@ -241,3 +241,13 @@ Learned:
 Insight:
 A conclusion without confidence is incomplete. Production systems communicate both the answer and how strongly they believe it.
 Great agents challenge their own answers.
+
+## Nugget 022
+
+Learned:
+- Root cause analysis
+- Hypothesis generation
+- Evidence-backed conclusions
+
+Insight:
+Observations are not root causes. Root causes require supporting evidence.
