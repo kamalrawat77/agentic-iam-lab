@@ -28,3 +28,13 @@ This single idea powers:
 - RAG systems
 - Security investigation assistants
 - AI search engines
+
+## Nugget 030
+
+Learned:
+- Retrieval-Augmented Generation
+- Context assembly
+- Retrieval before generation
+
+Insight:
+The quality of an AI answer depends heavily on the quality of the retrieved context.
