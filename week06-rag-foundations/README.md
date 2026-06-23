@@ -49,3 +49,13 @@ Learned:
 Insight:
 A single document provides an answer.
 Multiple documents provide evidence.
+
+## Nugget 032
+
+Learned:
+- Similarity thresholds
+- Retrieval filtering
+- Precision vs recall
+
+Insight:
+The best RAG systems do not retrieve the most documents. They retrieve the most relevant documents.
