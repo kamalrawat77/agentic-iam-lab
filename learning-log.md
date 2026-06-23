@@ -302,3 +302,13 @@ Learned:
 Insight:
 An agent becomes significantly more valuable when it can remember past investigations and reason across time.
 State and history provide insight.
+
+## Nugget 027
+
+Learned:
+- Knowledge retrieval
+- Searchable investigation history
+- Historical case analysis
+
+Insight:
+Stored investigations become significantly more valuable when agents can search and reuse them.
