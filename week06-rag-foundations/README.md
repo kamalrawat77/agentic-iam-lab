@@ -19,7 +19,7 @@ Learned:
 Insight:
 Embeddings convert meaning into numbers, allowing systems to retrieve information based on similarity rather than exact keywords.
 
-**Embeddings** convert text into mathematical coordinates where similar meanings end up near each other, allowing computers to search by meaning rather than exact words.
+Embeddings convert text into mathematical coordinates where similar meanings end up near each other, allowing computers to search by meaning rather than exact words.
 
 This single idea powers:
 
