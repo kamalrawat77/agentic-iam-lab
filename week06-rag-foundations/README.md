@@ -38,3 +38,14 @@ Learned:
 
 Insight:
 The quality of an AI answer depends heavily on the quality of the retrieved context.
+
+## Nugget 031
+
+Learned:
+- Multi-document retrieval
+- Context assembly
+- Top-k similarity search
+
+Insight:
+A single document provides an answer.
+Multiple documents provide evidence.
