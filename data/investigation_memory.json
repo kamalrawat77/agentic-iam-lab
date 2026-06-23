@@ -1,4 +1,4 @@
-data=[
+[
   {
     "investigation_id": 1,
     "date": "2026-06-19",
@@ -6,7 +6,8 @@ data=[
     "inactive_approvers": 35,
     "sla_compliance": 72,
     "root_cause": "Inactive Approvers",
-    "confidence": "HIGH"
+    "confidence": "HIGH",
+    "recommendation": "Enable approver monitoring"
   }, 
   {
     "investigation_id": 2,
@@ -15,7 +16,8 @@ data=[
     "inactive_approvers": 25,
     "sla_compliance": 70,
     "root_cause": "Workflow Bottleneck",
-    "confidence": "HIGH"
+    "confidence": "HIGH",
+    "recommendation": "Optimize workflow routing"
   }, 
   {
     "investigation_id": 3,
@@ -24,7 +26,8 @@ data=[
     "inactive_approvers": 25,
     "sla_compliance": 35,
     "root_cause": "Provisioning Delays",
-    "confidence": "HIGH"
+    "confidence": "HIGH",
+    "recommendation": "Increase connector capacity"
   }, 
   {
     "investigation_id": 4,
@@ -33,6 +36,7 @@ data=[
     "inactive_approvers": 15,
     "sla_compliance": 72,
     "root_cause": "Inactive Approvers",
-    "confidence": "HIGH"
+    "confidence": "HIGH",
+    "recommendation": "Enable approver monitoring"
   }
 ]
