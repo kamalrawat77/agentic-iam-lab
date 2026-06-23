@@ -1,4 +1,4 @@
-[
+data=[
   {
     "investigation_id": 1,
     "date": "2026-06-19",
@@ -14,7 +14,7 @@
     "dormant_accounts": 75,
     "inactive_approvers": 25,
     "sla_compliance": 70,
-    "root_cause": "Inactive Approvers",
+    "root_cause": "Workflow Bottleneck",
     "confidence": "HIGH"
   }, 
   {
@@ -22,8 +22,8 @@
     "date": "2026-06-21",
     "dormant_accounts": 65,
     "inactive_approvers": 25,
-    "sla_compliance": 70,
-    "root_cause": "Inactive Approvers",
+    "sla_compliance": 35,
+    "root_cause": "Provisioning Delays",
     "confidence": "HIGH"
   }, 
   {
