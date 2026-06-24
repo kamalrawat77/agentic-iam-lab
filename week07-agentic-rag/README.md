@@ -7,3 +7,14 @@ Learned:
 
 Insight:
 An agent is not defined by using an LLM. An agent is defined by making decisions about what actions to take.
+
+
+## Nugget 035
+
+Learned:
+- Tool registry
+- Dynamic tool execution
+- Agent tool selection
+
+Insight:
+An agent becomes useful when it can choose among multiple capabilities instead of following a fixed workflow.
