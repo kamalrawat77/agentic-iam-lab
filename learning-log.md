@@ -374,3 +374,13 @@ Learned:
 
 Insight:
 The best RAG systems do not retrieve the most documents. They retrieve the most relevant documents.
+
+## Nugget 033
+
+Learned:
+- Re-ranking
+- Two-stage retrieval
+- Retrieval quality improvement
+
+Insight:
+The best search result is not always the highest embedding score. Re-ranking helps identify the most useful context.
