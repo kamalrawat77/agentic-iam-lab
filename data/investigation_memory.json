@@ -35,8 +35,68 @@
     "dormant_accounts": 85,
     "inactive_approvers": 15,
     "sla_compliance": 72,
-    "root_cause": "Inactive Approvers",
     "confidence": "HIGH",
-    "recommendation": "Enable approver monitoring"
-  }
+    "root_cause": "Approval Queue Growth",
+    "recommendation": "Reduce approval backlog"
+  },
+  {
+    "investigation_id": 5,
+    "date": "2026-06-23",
+    "dormant_accounts": 115,
+    "inactive_approvers": 115,
+    "sla_compliance": 72,
+    "confidence": "HIGH",
+    "root_cause": "Escalation Failure",
+    "recommendation": "Review escalation rules"
+  },
+  {
+    "investigation_id": 6,
+    "date": "2026-06-23",
+    "dormant_accounts": 115,
+    "inactive_approvers": 115,
+    "sla_compliance": 72,
+    "confidence": "HIGH",
+    "root_cause": "Dormant Accounts",
+    "recommendation": "Perform Access review for Dormant accounts"
+  },
+  {
+    "investigation_id": 7,
+    "date": "2026-06-23",
+    "dormant_accounts": 115,
+    "inactive_approvers": 115,
+    "sla_compliance": 72,
+    "confidence": "HIGH",
+    "root_cause": "Escalation Failure",
+    "recommendation": "Review escalation rules"
+  },
+  {
+    "investigation_id": 8,
+    "date": "2026-06-23",
+    "dormant_accounts": 115,
+    "inactive_approvers": 115,
+    "sla_compliance": 12,
+    "confidence": "HIGH",
+    "root_cause": "Certification SLA Failure",
+    "recommendation": "Review Certification rules"
+  },
+  {
+    "investigation_id": 9,
+    "date": "2026-06-23",
+    "dormant_accounts": 115,
+    "inactive_approvers": 115,
+    "sla_compliance": 72,
+    "confidence": "HIGH",
+    "root_cause": "Escalation Failure",
+    "recommendation": "Review escalation rules"
+  },
+  {
+    "investigation_id": 10,
+    "date": "2026-06-23",
+    "dormant_accounts": 115,
+    "inactive_approvers": 115,
+    "sla_compliance": 72,
+    "confidence": "HIGH",
+    "root_cause": "Escalation Failure",
+    "recommendation": "Review escalation rules"
+  }  
 ]
