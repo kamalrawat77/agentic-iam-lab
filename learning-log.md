@@ -448,3 +448,14 @@ Learned:
 Insight:
 A production agent is not one that never fails.
 A production agent is one that can recover from failure.
+
+## Nugget 040
+
+Learned:
+- State machines
+- State transitions
+- Agent workflow design
+- Loop-based execution
+
+Insight:
+An enterprise agent is best modeled as a workflow of states rather than a sequence of prompts.
