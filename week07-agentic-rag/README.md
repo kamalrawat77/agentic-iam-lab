@@ -39,3 +39,14 @@ Learned:
 Insight:
 Memory is not chat history.
 Memory is the evidence collected during an investigation.
+
+## Nugget 038
+
+Learned:
+- ReAct architecture
+- Iterative planning
+- Dynamic tool execution
+- Finish condition
+
+Insight:
+An agent is a loop, not a single LLM call.
