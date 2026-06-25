@@ -459,3 +459,14 @@ Learned:
 
 Insight:
 An enterprise agent is best modeled as a workflow of states rather than a sequence of prompts.
+
+## Nugget 041
+
+Learned:
+- Workflow engines
+- Node registry
+- State passing
+- Graph execution
+
+Insight:
+LangGraph is fundamentally a workflow engine operating on shared state.
