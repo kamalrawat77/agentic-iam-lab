@@ -470,3 +470,13 @@ Learned:
 
 Insight:
 LangGraph is fundamentally a workflow engine operating on shared state.
+
+## Nugget 042
+
+Learned:
+- Adaptive workflows
+- LLM-driven state transitions
+- Dynamic planning
+
+Insight:
+The most powerful agents are not those with the most tools. They are the ones that can decide which workflow to execute.
