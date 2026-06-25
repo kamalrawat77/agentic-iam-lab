@@ -59,6 +59,6 @@ Learned:
 - Fallback strategies
 - Agent resilience
 
-** Insight **:
+### Insight:
 A production agent is not one that never fails.
 A production agent is one that can recover from failure.
