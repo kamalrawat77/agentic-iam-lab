@@ -6,10 +6,10 @@ def dormant_accounts():
 def department_breakdown():
 
     return """
-IT: 45
-HR: 12
-Finance: 18
-"""
+    IT: 45
+    HR: 12
+    Finance: 18
+    """
 
 
 def trend_analysis():
