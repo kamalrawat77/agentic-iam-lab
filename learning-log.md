@@ -405,6 +405,16 @@ Learned:
 Insight:
 An agent becomes useful when it can choose among multiple capabilities instead of following a fixed workflow.
 
+## Nugget 036
+
+Learned:
+- Multi-step investigations
+- Evidence gathering
+- Tool chaining
+
+Insight:
+Agents become far more powerful when they combine evidence from multiple tools instead of relying on a single source.
+
 ## Nugget 037
 
 Learned:
