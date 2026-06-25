@@ -404,3 +404,14 @@ Learned:
 
 Insight:
 An agent becomes useful when it can choose among multiple capabilities instead of following a fixed workflow.
+
+## Nugget 037
+
+Learned:
+- Agent memory
+- Observation tracking
+- Investigation state
+
+Insight:
+Memory is not chat history.
+Memory is the evidence collected during an investigation.
