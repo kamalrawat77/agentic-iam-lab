@@ -50,3 +50,15 @@ Learned:
 
 Insight:
 An agent is a loop, not a single LLM call.
+
+## Nugget 039
+
+Learned:
+- Error handling
+- Tool failure recovery
+- Fallback strategies
+- Agent resilience
+
+** Insight **:
+A production agent is not one that never fails.
+A production agent is one that can recover from failure.
