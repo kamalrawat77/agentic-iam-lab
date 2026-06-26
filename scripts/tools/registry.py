@@ -1,26 +1,23 @@
-from scripts.tools.tool import Tool
-from scripts.tools.identity_tools import dormant_accounts
-from scripts.tools.analytics_tools import trend_analysis
-from scripts.tools.incident_tools import search_history
+AVAILABLE_TOOLS = [
 
-TOOLS = {
+    {
+        "name":"trend_analysis",
+        "description":"Analyze trends over time."
+    },
 
-    "dormant_accounts": Tool(
-        "dormant_accounts",
-        "Returns dormant account metrics",
-        dormant_accounts
-    ),
+    {
+        "name":"search_history",
+        "description":"Search previous investigations."
+    },
 
-    "trend_analysis": Tool(
-        "trend_analysis",
-        "Analyzes trends",
-        trend_analysis
-    ),
+    {
+        "name":"department_breakdown",
+        "description":"Summarize department statistics."
+    },
 
-    "search_history": Tool(
-        "search_history",
-        "Search historical investigations",
-        search_history
-    )
+    {
+        "name":"dormant_accounts",
+        "description":"Return dormant account metrics."
+    }
 
-}
+]

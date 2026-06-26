@@ -1,6 +1,9 @@
 import json
 from google import genai
-from scripts.config import GEMINI_API_KEY
+from scripts.config import (
+    GEMINI_API_KEY,
+    MODEL_NAME
+)
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
@@ -8,7 +11,9 @@ client = genai.Client(api_key=GEMINI_API_KEY)
 class Planner:
 
     def __init__(self):
-        self.client = client
+        self.client = genai.Client(
+            api_key=GEMINI_API_KEY
+        )
 
     def create_plan(self, question, available_tools):
         prompt = f"""
@@ -20,7 +25,13 @@ Question:
 Available Tools:
 {json.dumps(available_tools, indent=2)}
 
-Create an investigation plan.
+Your task is ONLY to create an investigation plan.
+
+Never answer the user's question.
+
+Return JSON ONLY.
+
+Format:
 
 Return ONLY JSON in this format:
 
@@ -36,7 +47,7 @@ Return ONLY JSON in this format:
 """
 
         response = self.client.models.generate_content(
-            model="gemini-2.5-flash",
+            model=MODEL_NAME,
             contents=prompt
         )
 
