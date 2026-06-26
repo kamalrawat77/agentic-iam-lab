@@ -491,3 +491,20 @@ Learned:
 
 Insight:
 A production AI agent separates planning from execution. The planner decides what to do, while the executor performs the work.
+
+## Nugget 044
+
+Learned:
+- Executor Pattern
+- Plan execution
+- Evidence collection
+- Execution logging
+- Performance measurement
+
+Upgrades:
+-Created folder structure
+-Key management and LLM calls modularized
+-Git integration
+
+Insight:
+The executor should not contain business logic. It should only execute the plan produced by the planner and collect evidence.
