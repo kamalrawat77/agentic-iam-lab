@@ -8,9 +8,13 @@ class Executor:
           start = time.time()
           tool_name = step["tool"] 
           print(f"Executing: {tool_name}")
-          tool = TOOLS[tool_name]      
-          result = tool.function()   
-          print(f"Completed: {tool_name}")
+          tool = TOOLS[tool_name]  
+          try:  
+              result = tool.function()
+              print(f"Completed: {tool_name}")          
+          except Exception as e:
+              result = str(e)
+              print(f"Error Executing: {tool_name}")
           duration = time.time() - start
           evidence.append(
               {     
