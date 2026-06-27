@@ -39,10 +39,17 @@ Return ONLY JSON in this format:
     "investigation":"...",
     "steps":[
         {{
-            "tool":"trend_analysis",
-            "purpose":"..."
-        }}
-    ]
+            "tool":"dormant_accounts",
+            "purpose":"...",
+            "description":"Find dormant accounts",
+            "parameters":{{
+                "days":{{
+                    "type":"integer",
+                    "default":90
+                }}
+            }}
+          }}
+        ]
 }}
 """
 

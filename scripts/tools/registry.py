@@ -34,10 +34,20 @@ from scripts.tools.identity_tools import dormant_accounts
 
 registry.register(
         Tool(
-            name="dormant_accounts",
-            description="Find dormant accounts",
-            category="Identity",
-            function=dormant_accounts
-        )
+    name="dormant_accounts",
+    description="Find dormant accounts",
+
+    category="Identity",
+
+    function=dormant_accounts,
+
+    parameters={
+        "days":{
+            "type":"integer",
+            "description":"Minimum inactivity period",
+            "default":90
+        }
+    }
+)
     )
     
