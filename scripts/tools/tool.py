@@ -1,13 +1,13 @@
-from dataclasses import dataclass
-from typing import Callable, Optional
-
+from dataclasses import dataclass, field
+from typing import Callable
 
 @dataclass
 class Tool:
+
     name: str
     description: str
     category: str
-    version: str
-    risk: str
     function: Callable
-    parameters: Optional[dict] = None
+    version: str = "1.0"
+    risk: str = "Low"
+    parameters: dict = field(default_factory=dict)
