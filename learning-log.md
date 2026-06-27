@@ -764,3 +764,131 @@ Monitoring
 - OpenTelemetry
 - Grafana
 
+# Nugget 050 - Dynamic Tool Arguments
+
+## Objective
+
+Move from fixed-function tools to parameterized tools.
+
+Instead of
+
+Tool
+↓
+
+Function()
+
+we now support
+
+Tool
+↓
+
+Function(**arguments)
+
+---
+
+## Concepts Learned
+
+- Function Introspection
+- Dynamic Argument Passing
+- Keyword Arguments (**kwargs)
+- Tool Input Validation
+- Agent Tool Calling
+
+---
+
+## Why This Matters
+
+Without arguments every tool is fixed.
+
+Example
+
+Find dormant accounts
+
+With arguments
+
+Find dormant accounts older than 120 days
+
+Find dormant accounts in Finance
+
+Find dormant privileged accounts
+
+One tool becomes infinitely reusable.
+
+---
+
+## Production Insight
+
+OpenAI Tool Calling
+
+Anthropic Tool Use
+
+LangChain Tools
+
+CrewAI Tools
+
+All work by passing JSON arguments into Python functions.
+
+Example
+
+{
+  "tool":"search_users",
+  "arguments":{
+      "department":"Finance",
+      "enabled":true
+  }
+}
+
+Executor
+
+↓
+
+search_users(
+    department="Finance",
+    enabled=True
+)
+
+---
+
+## Design Pattern
+
+Command Pattern
+
+The planner doesn't execute work.
+
+It issues commands.
+
+The executor interprets the command.
+
+---
+
+## Architecture
+
+Planner
+
+↓
+
+JSON
+
+↓
+
+Executor
+
+↓
+
+Python Function(**arguments)
+
+---
+
+## Industry Mapping
+
+Every modern AI Agent framework supports parameterized tools.
+
+Examples
+
+- OpenAI Agents SDK
+- LangGraph
+- CrewAI
+- Semantic Kernel
+- Google ADK
+
+
