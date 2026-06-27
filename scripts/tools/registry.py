@@ -23,6 +23,11 @@ class ToolRegistry:
           })
       return planner_tools
 
+    def exists(self, tool_name):
+      raise ValueError(
+          f"Planner returned unknown tool: {tool_name}"
+      )
+
 registry = ToolRegistry()
 
 from scripts.tools.identity_tools import dormant_accounts

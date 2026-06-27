@@ -1,21 +1,21 @@
 import json
 from google import genai
 from scripts.config import (
-    GEMINI_API_KEY,
+    get_gemini_key,
     MODEL_NAME
 )
 
-client = genai.Client(api_key=GEMINI_API_KEY)
+client = genai.Client(api_key=get_gemini_key())
 
 
 class Planner:
 
-    def __init__(self):
-        self.client = genai.Client(
-            api_key=GEMINI_API_KEY
-        )
+    def __init__(self, registry):
+        self.client = genai.Client(api_key=get_gemini_key())
+        self.registry = registry
 
-    def create_plan(self, question, available_tools):
+    def create_plan(self, question):
+        available_tools = self.registry.list_for_planner()
         prompt = f"""
 You are an IAM Investigation Planner.
 
