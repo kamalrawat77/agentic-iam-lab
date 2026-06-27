@@ -1,12 +1,13 @@
+from dataclasses import dataclass
+from typing import Callable, Optional
+
+
+@dataclass
 class Tool:
-
-    def __init__(
-        self,
-        name,
-        description,
-        function
-    ):
-
-        self.name = name
-        self.description = description
-        self.function = function
+    name: str
+    description: str
+    category: str
+    version: str
+    risk: str
+    function: Callable
+    parameters: Optional[dict] = None
