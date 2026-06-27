@@ -892,3 +892,252 @@ Examples
 - Google ADK
 
 
+# Nugget 051 - Python Decorators and Automatic Tool Registration
+
+## Objective
+
+Eliminate manual tool registration by introducing a `@tool` decorator.
+
+Instead of:
+
+1. Writing the function
+2. Registering it separately
+
+We now write only the function and let the framework register it automatically.
+
+---
+
+# What We Built
+
+Before
+
+Function
+
+↓
+
+Manual Tool Object
+
+↓
+
+Manual Registry Registration
+
+After
+
+Function
+
+↓
+
+Decorator
+
+↓
+
+Tool Object
+
+↓
+
+Registry
+
+---
+
+# Why We Built It
+
+Manual registration has several problems:
+
+- Duplicate metadata
+- Easy to forget registration
+- Multiple files need updating
+- Doesn't scale
+
+Decorators solve all of these.
+
+---
+
+# Core Concepts Learned
+
+## 1. Python Decorators
+
+A decorator is simply a function that receives another function.
+
+Example
+
+def hello(func):
+
+    print("Registering")
+
+    return func
+
+---
+
+## 2. Function Metadata
+
+Every Python function already knows
+
+- Name
+- Parameters
+- Default values
+- Type hints
+- Documentation
+
+We can inspect these automatically.
+
+---
+
+## 3. inspect.signature()
+
+This allows Python to inspect a function.
+
+Example
+
+def dormant_accounts(days=90):
+    ...
+
+inspect.signature(dormant_accounts)
+
+returns
+
+(days=90)
+
+---
+
+## 4. Automatic Registration
+
+Instead of
+
+registry.register(...)
+
+the decorator performs registration automatically during import.
+
+This is called
+
+Registration by Side Effect.
+
+---
+
+# Design Pattern
+
+Decorator Pattern
+
+↓
+
+Registration Pattern
+
+↓
+
+Reflection (Introspection)
+
+---
+
+# Production Implementation
+
+FastAPI
+
+@app.get("/users")
+
+registers an API endpoint.
+
+LangChain
+
+@tool
+
+registers a tool.
+
+pytest
+
+def test_xyz():
+
+is automatically discovered.
+
+Click
+
+@click.command()
+
+registers CLI commands.
+
+Our framework now behaves similarly.
+
+---
+
+# Production Architecture
+
+Import Module
+
+↓
+
+Decorator Executes
+
+↓
+
+Create Tool Object
+
+↓
+
+Register Tool
+
+↓
+
+Planner Can Discover Tool
+
+No manual registration required.
+
+---
+
+# Interview Takeaways
+
+Q:
+Why use decorators?
+
+A:
+
+To separate framework behavior from business logic.
+
+Developers only write business logic.
+
+The framework handles registration, validation, logging and discovery.
+
+---
+
+Q:
+
+Why inspect the function?
+
+A:
+
+To avoid duplicate metadata.
+
+The function already contains valuable information.
+
+---
+
+# Common Mistakes
+
+❌ Forgetting to return func inside decorator.
+
+❌ Creating circular imports.
+
+❌ Registering inside the executor instead of during import.
+
+---
+
+# What to Remember
+
+Business Logic
+
+↓
+
+Decorator
+
+↓
+
+Registry
+
+↓
+
+Planner
+
+↓
+
+Executor
+
+The developer writes only the function.
+
+The framework does everything else.
