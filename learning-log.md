@@ -508,3 +508,259 @@ Upgrades:
 
 Insight:
 The executor should not contain business logic. It should only execute the plan produced by the planner and collect evidence.
+
+# Learning Log - Nuggets 044 to 049
+
+## Project
+Agentic IAM Lab
+
+---
+
+# Nugget 044 - Investigation Executor
+
+## Objective
+
+Build an execution engine capable of taking an investigation plan and executing each step.
+
+## Concepts Learned
+
+- Executor Pattern
+- Tool Dispatch
+- Execution Loop
+- Evidence Collection
+- Separation of Planning and Execution
+
+## Production Insight
+
+Modern AI systems separate planning from execution.
+
+Planner:
+- Decides what to do.
+
+Executor:
+- Performs the work.
+
+Examples:
+- OpenAI Agents SDK
+- LangGraph
+- CrewAI
+
+---
+
+# Nugget 045 - Planner
+
+## Objective
+
+Build an LLM-powered planner.
+
+Question
+
+↓
+
+Investigation Plan
+
+## Concepts Learned
+
+- Structured JSON Output
+- Prompt Engineering
+- Planner Pattern
+- LLM as a Decision Engine
+
+## Production Insight
+
+Production planners should never execute work.
+
+They only return plans.
+
+---
+
+# Nugget 046 - Bootstrap
+
+## Objective
+
+Automate environment setup.
+
+## Concepts Learned
+
+- Bootstrap Scripts
+- Git Configuration
+- Secret Management
+- Environment Initialization
+
+## Production Insight
+
+Enterprise applications always have startup initialization.
+
+Examples
+
+- Spring Boot
+- FastAPI startup events
+- Kubernetes Init Containers
+
+---
+
+# Nugget 047 - Tool Object
+
+## Objective
+
+Represent tools as objects instead of functions.
+
+## Concepts Learned
+
+- Dataclasses
+- Metadata
+- Object-Oriented Design
+- Tool Abstraction
+
+## Production Insight
+
+Real AI platforms store much more than functions.
+
+A tool usually contains
+
+- Description
+- Parameters
+- Permissions
+- Retry Policy
+- Timeout
+- Version
+
+---
+
+# Nugget 048 - Tool Registry
+
+## Objective
+
+Build a centralized registry.
+
+## Concepts Learned
+
+- Registry Pattern
+- Encapsulation
+- Tool Discovery
+- Metadata-driven Architecture
+
+## Production Insight
+
+Planner asks
+
+"What tools exist?"
+
+Executor asks
+
+"Execute this tool."
+
+Neither component knows where the tool lives.
+
+Only the registry knows.
+
+This follows Dependency Inversion.
+
+---
+
+# Nugget 049 (Preview)
+
+## Goal
+
+Refactor the planner so it no longer receives tools manually.
+
+Instead
+
+Planner
+
+↓
+
+Registry
+
+↓
+
+Available Tools
+
+This completely decouples the planner from the notebook.
+
+---
+
+# Overall Architecture
+
+                User
+
+                  │
+
+                  ▼
+
+             Planner (LLM)
+
+                  │
+
+                  ▼
+
+         Investigation Plan
+
+                  │
+
+                  ▼
+
+             Executor
+
+                  │
+
+                  ▼
+
+            Tool Registry
+
+        ┌─────────┼─────────┐
+
+        ▼         ▼         ▼
+
+ Identity     Analytics   Incident
+
+   Tools         Tools      Tools
+
+                  │
+
+                  ▼
+
+              Evidence
+
+---
+
+# Key Design Patterns Learned
+
+- Registry Pattern
+- Strategy Pattern (coming)
+- Factory Pattern (coming)
+- Planner Pattern
+- Executor Pattern
+- Dependency Inversion
+- Encapsulation
+- Separation of Concerns
+
+---
+
+# Industry Technologies Related
+
+Planning
+- OpenAI Agents SDK
+- LangGraph
+- CrewAI
+
+Execution
+- LangGraph Nodes
+- Celery
+- Temporal
+
+Memory
+- Redis
+- Pinecone
+- ChromaDB
+
+Serving
+- FastAPI
+- Docker
+- Kubernetes
+
+Monitoring
+- LangSmith
+- OpenTelemetry
+- Grafana
+
