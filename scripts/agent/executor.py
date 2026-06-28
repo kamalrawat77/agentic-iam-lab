@@ -1,4 +1,5 @@
-from scripts.tools.registry import TOOLS
+from scripts.tools.validator import validate
+from scripts.tools.registry import registry
 import time
 
 class Executor:
@@ -6,7 +7,8 @@ class Executor:
         evidence = []
         for step in plan["steps"]:
           tool_name = step["tool"]
-          tool = TOOLS[tool_name]  
+          #tool = TOOLS[tool_name]  
+          tool = registry.get(tool_name)
           if tool is None:
             evidence.append({
                 "tool": tool_name,
@@ -17,6 +19,17 @@ class Executor:
           start = time.time()          
           print(f"Executing: {tool_name}")          
           try:  
+              args=inspect.signature(tool.function)
+              #print(args)
+              arguments = step.get("arguments", {})
+              validate(tool, arguments)
+              result = tool.function(**arguments)
+              valid_parameters = tool.parameters.keys()
+              for parameter in arguments:
+                if parameter not in valid_parameters:
+                  raise ValueError(
+                      f"Unknown parameter {parameter}"
+                  )
               result = tool.function()
               status = "SUCCESS"
               print(f"Completed: {tool_name}")          
