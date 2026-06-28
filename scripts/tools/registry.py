@@ -28,26 +28,4 @@ class ToolRegistry:
           f"Planner returned unknown tool: {tool_name}"
       )
 
-registry = ToolRegistry()
-
-from scripts.tools.identity_tools import dormant_accounts
-
-registry.register(
-        Tool(
-    name="dormant_accounts",
-    description="Find dormant accounts",
-
-    category="Identity",
-
-    function=dormant_accounts,
-
-    parameters={
-        "days":{
-            "type":"integer",
-            "description":"Minimum inactivity period",
-            "default":90
-        }
-    }
-)
-    )
-    
+registry = ToolRegistry()    
