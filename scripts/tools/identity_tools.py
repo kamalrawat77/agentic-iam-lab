@@ -4,9 +4,9 @@ from scripts.tools.decorators import tool
     description="Find dormant accounts",
     category="Identity"
 )
-def dormant_accounts(days=90):
-
-    return {
-        "days": days,
-        "count": 42
-    }
+def dormant_accounts(
+    days: int = 90,
+    include_privileged: bool = False,
+    department: str = "Finance"
+):
+    return {}
