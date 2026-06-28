@@ -1141,3 +1141,280 @@ Executor
 The developer writes only the function.
 
 The framework does everything else.
+
+# Nugget 052 - Automatic JSON Schema Generation
+
+## Objective
+
+Automatically generate tool parameter metadata by inspecting Python function signatures instead of manually defining schemas.
+
+---
+
+# Problem
+
+Before this nugget, every tool required metadata in two places.
+
+Example
+
+```python
+def dormant_accounts(days: int = 90):
+    ...
+```
+
+and
+
+```python
+Tool(
+    parameters={
+        "days":{
+            "type":"integer",
+            "default":90
+        }
+    }
+)
+```
+
+This violates the DRY (Don't Repeat Yourself) principle.
+
+---
+
+# Solution
+
+Use Python introspection.
+
+The function itself already contains
+
+- Parameter names
+- Default values
+- Type hints
+
+Therefore the framework should generate metadata automatically.
+
+---
+
+# Concepts Learned
+
+## Reflection (Introspection)
+
+Reflection means a program examining itself at runtime.
+
+Python provides the inspect module for this.
+
+Example
+
+```python
+inspect.signature(function)
+```
+
+returns
+
+```
+(days: int = 90)
+```
+
+---
+
+## Type Mapping
+
+Python types
+
+```python
+int
+bool
+float
+str
+```
+
+must be converted into JSON types
+
+```text
+integer
+boolean
+number
+string
+```
+
+using a lookup table.
+
+---
+
+## Required vs Optional Parameters
+
+A parameter is required when no default value exists.
+
+Example
+
+```python
+def search_users(username):
+```
+
+Required
+
+Example
+
+```python
+def search_users(days=90):
+```
+
+Optional
+
+---
+
+## Generated Schema
+
+Example
+
+```python
+def search_users(
+    department: str,
+    enabled: bool = True
+)
+```
+
+becomes
+
+```json
+{
+  "department": {
+    "type": "string",
+    "required": true
+  },
+  "enabled": {
+    "type": "boolean",
+    "required": false,
+    "default": true
+  }
+}
+```
+
+---
+
+# Design Patterns
+
+- Reflection
+- Metadata Generation
+- DRY
+- Convention over Configuration
+
+---
+
+# Production Mapping
+
+OpenAI Agents SDK
+
+↓
+
+Reads function signature
+
+↓
+
+Creates JSON schema
+
+↓
+
+Sends schema to GPT
+
+---
+
+Google ADK
+
+↓
+
+Reads Python type hints
+
+↓
+
+Builds Gemini function declaration
+
+---
+
+LangChain
+
+↓
+
+Creates Tool schema automatically
+
+---
+
+Semantic Kernel
+
+↓
+
+Reads C#/Python method signatures
+
+↓
+
+Creates callable functions
+
+---
+
+# Why This Matters
+
+The function becomes the single source of truth.
+
+Changing a function automatically updates
+
+- Planner metadata
+- Tool schema
+- Documentation
+- Validation
+
+without additional code changes.
+
+---
+
+# Common Mistakes
+
+❌ Forgetting type hints.
+
+❌ Manually overriding generated metadata.
+
+❌ Assuming every parameter is required.
+
+❌ Ignoring default values.
+
+---
+
+# Interview Questions
+
+Q: Why generate schemas automatically?
+
+A:
+
+To reduce duplication, eliminate inconsistencies, and ensure the function signature is the authoritative definition of the tool.
+
+---
+
+Q:
+
+What is reflection?
+
+A:
+
+The ability of a program to inspect its own structure during runtime.
+
+---
+
+# Key Takeaways
+
+Python Function
+
+↓
+
+inspect.signature()
+
+↓
+
+Generated JSON Schema
+
+↓
+
+Planner
+
+↓
+
+Executor
+
+↓
+
+Function
