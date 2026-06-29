@@ -18,7 +18,8 @@ class ToolRegistry:
           planner_tools.append({
               "name": tool.name,
               "description": tool.description,
-              "category": tool.category
+              "category": tool.category,
+              "parameters": tool.parameters
 
           })
       return planner_tools

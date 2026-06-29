@@ -2,9 +2,7 @@ from inspect import signature
 from scripts.tools.registry import registry
 from scripts.tools.tool import Tool
 
-def tool(description: str, category: str):
-    
-    TYPE_MAP = {
+TYPE_MAP = {
         int: "integer",
         float: "number",
         bool: "boolean",
@@ -12,8 +10,11 @@ def tool(description: str, category: str):
         list: "array",
         dict: "object"
     }
-
+    
+def tool(description: str, category: str):
+    
     def decorator(func):
+        print(f"Decorator executed for {func.__name__}")
         sig = signature(func)
         
         parameters = {}
@@ -43,7 +44,7 @@ def tool(description: str, category: str):
         )
 
         registry.register(tool_obj)
-
+        print("Registered", func.__name__)
         return func
 
     return decorator

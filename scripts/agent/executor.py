@@ -2,10 +2,15 @@ import inspect
 from scripts.tools.validator import validate
 from scripts.tools.registry import registry
 import time
+from scripts.core.context import ExecutionContext
 
 class Executor:
-    def execute(self, plan):
+    def execute(self, investigation):
         evidence = []
+        investigation.context = ExecutionContext(
+            question=investigation.question
+        )
+        plan=investigation.plan
         for step in plan["steps"]:
           tool_name = step["tool"]
           #tool = TOOLS[tool_name]  
@@ -24,14 +29,8 @@ class Executor:
               #print(args)
               arguments = step.get("arguments", {})
               validate(tool, arguments)
-              result = tool.function(**arguments)
-              valid_parameters = tool.parameters.keys()
-              for parameter in arguments:
-                if parameter not in valid_parameters:
-                  raise ValueError(
-                      f"Unknown parameter {parameter}"
-                  )
-              result = tool.function()
+              result = tool.function(context=investigation.context,**arguments)
+              
               status = "SUCCESS"
               print(f"Completed: {tool_name}")          
           except Exception as e:
@@ -48,4 +47,5 @@ class Executor:
                   "execution_time": round(duration, 3)
               }
           )
-        return evidence
+        investigation.results.append(evidence)
+        return #evidence

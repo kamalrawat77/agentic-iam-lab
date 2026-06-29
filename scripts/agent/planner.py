@@ -14,13 +14,13 @@ class Planner:
         self.client = genai.Client(api_key=get_gemini_key())
         self.registry = registry
 
-    def create_plan(self, question):
+    def create_plan(self, investigation):
         available_tools = self.registry.list_for_planner()
         prompt = f"""
 You are an IAM Investigation Planner.
 
 Question:
-{question}
+{investigation.question}
 
 Available Tools:
 {json.dumps(available_tools, indent=2)}
@@ -63,4 +63,7 @@ Return ONLY JSON in this format:
         if text.startswith("```json"):
             text = text.replace("```json", "").replace("```", "").strip()
 
-        return json.loads(text)
+        investigation.plan = json.loads(text)
+        investigation.status = "PLANNED"
+
+        return investigation
