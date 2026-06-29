@@ -11,6 +11,9 @@ TYPE_MAP = {
         dict: "object"
     }
     
+FRAMEWORK_PARAMETERS = {
+    "context"
+}    
 def tool(description: str, category: str):
     
     def decorator(func):
@@ -20,7 +23,9 @@ def tool(description: str, category: str):
         parameters = {}
         
         for name, param in sig.parameters.items():
-        
+            if name in FRAMEWORK_PARAMETERS:
+              continue
+
             annotation = param.annotation
         
             json_type = TYPE_MAP.get(annotation, "string")

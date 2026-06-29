@@ -2,6 +2,13 @@ class ValidationError(Exception):
     """Raised when tool arguments are invalid."""
     pass
 
+TYPE_CHECKERS = {
+        "integer": int,
+        "number": (int, float),
+        "boolean": bool,
+        "string": str,
+    }
+
 
 def validate(tool, arguments):
 
@@ -21,12 +28,7 @@ def validate(tool, arguments):
                 f"Unknown parameter: {arg}"
             )
 
-    TYPE_CHECKERS = {
-        "integer": int,
-        "number": (int, float),
-        "boolean": bool,
-        "string": str,
-    }
+   
 
     for name, value in arguments.items():
 
