@@ -83,6 +83,7 @@ def push(message):
 
     print("✓ Git Pushed")
     print("=" * 60)
+    print(f"✓ {result}")
     print(f"✓ {result.stdout}")
     print("=" * 60)
 
@@ -106,6 +107,7 @@ def pull():
 
   print("✓ Git Pulled")
   print("=" * 60)
+  print(f"✓ {result}")
   print(f"✓ {result.stdout}")
   print("=" * 60)
 
