@@ -52,25 +52,33 @@ def push(message):
     print("=" * 60)
     print("Agentic IAM Lab Push")
     print("=" * 60)
-
-    subprocess.run(
+    result=[]
+    result.append(subprocess.run(
         [
             "git",
             "add",
             "."
-        ]
-    )
+        ], 
+        capture_output=True, 
+        text=True, 
+        check=True,
+        timeout=10
+    ))
 
-    subprocess.run(
+    result.append(subprocess.run(
         [
             "git",
             "commit",
             "-m",
             message
-        ]
-    )
+        ], 
+        capture_output=True, 
+        text=True, 
+        check=True,
+        timeout=10
+    ))
 
-    result=subprocess.run(
+    result.append(subprocess.run(
         [
             "git",
             "push"
@@ -79,12 +87,12 @@ def push(message):
         text=True, 
         check=True,
         timeout=10
-    )
+    ))
 
     print("✓ Git Pushed")
     print("=" * 60)
     print(f"✓ {result}")
-    print(f"✓ {result.stdout}")
+    #print(f"✓ {result.stdout}")
     print("=" * 60)
 
 
