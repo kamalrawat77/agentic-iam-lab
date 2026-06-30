@@ -1,6 +1,7 @@
 from inspect import signature
 from scripts.tools.registry import registry
 from scripts.tools.tool import Tool
+from scripts.core.context import ExecutionContext
 
 TYPE_MAP = {
         int: "integer",
@@ -10,7 +11,10 @@ TYPE_MAP = {
         list: "array",
         dict: "object"
     }
-    
+FRAMEWORK_TYPES = (
+    ExecutionContext,
+)
+
 FRAMEWORK_PARAMETERS = {
     "context"
 }    
@@ -23,11 +27,11 @@ def tool(description: str, category: str):
         parameters = {}
         
         for name, param in sig.parameters.items():
-            if name in FRAMEWORK_PARAMETERS:
-              continue
-
             annotation = param.annotation
-        
+
+            if annotation in FRAMEWORK_TYPES:
+              continue
+            
             json_type = TYPE_MAP.get(annotation, "string")
         
             required = param.default is param.empty

@@ -5,7 +5,7 @@ from scripts.core.context import ExecutionContext
     description="Show department breakdown",
     category="Analytics"
 )
-def department_breakdown(context):
+def department_breakdown(context: ExecutionContext):
 
     dormant = context.tool_results["dormant_accounts"]
 

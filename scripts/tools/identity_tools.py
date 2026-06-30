@@ -6,7 +6,7 @@ from scripts.core.context import ExecutionContext
     category="Identity"
 )
 def dormant_accounts(
-    context,
+    context: ExecutionContext,
     days: int = 90,
     include_privileged: bool = False,
     department: str = "Finance"
