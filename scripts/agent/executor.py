@@ -11,6 +11,7 @@ class Executor:
             question=investigation.question
         )
         plan=investigation.plan
+        investigation.status = "RUNNING"
         for step in plan["steps"]:
           tool_name = step["tool"]
           #tool = TOOLS[tool_name]  
@@ -48,4 +49,5 @@ class Executor:
               }
           )
         investigation.results.append(evidence)
+        investigation.status = "COMPLETED"
         return #evidence
