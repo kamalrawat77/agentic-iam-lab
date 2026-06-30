@@ -91,6 +91,7 @@ def push(message):
 
     print("✓ Git Pushed")
     print("=" * 60)
+    print(result)
     print(f"✓ {result}")
     #print(f"✓ {result.stdout}")
     print("=" * 60)
