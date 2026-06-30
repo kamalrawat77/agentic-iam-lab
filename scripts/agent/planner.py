@@ -4,6 +4,7 @@ from scripts.config import (
     get_gemini_key,
     MODEL_NAME
 )
+from scripts.core.plan import (PlanStep,Plan)
 
 client = genai.Client(api_key=get_gemini_key())
 
@@ -63,7 +64,32 @@ Return ONLY JSON in this format:
         if text.startswith("```json"):
             text = text.replace("```json", "").replace("```", "").strip()
 
-        investigation.plan = json.loads(text)
+        planner_output = json.loads(text)
+        steps = []
+        for step in planner_output["steps"]:
+            steps.append(
+
+                PlanStep(
+
+                    tool=step["tool"],
+
+                    purpose=step["purpose"],
+
+                    description=step["description"],
+
+                    arguments={}
+                )
+            )
+
+        investigation.plan = Plan(
+
+            goal=planner_output["investigation"],
+
+            steps=steps
+        )
+
+
+
         investigation.status = "PLANNED"
 
         return investigation

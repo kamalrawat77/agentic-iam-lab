@@ -3,6 +3,7 @@ from scripts.tools.validator import validate
 from scripts.tools.registry import registry
 import time
 from scripts.core.context import ExecutionContext
+from scripts.core.plan import (PlanStep,Plan)
 
 class Executor:
     def execute(self, investigation):
@@ -10,11 +11,10 @@ class Executor:
         investigation.context = ExecutionContext(
             question=investigation.question
         )
-        plan=investigation.plan
+        
         investigation.status = "RUNNING"
-        for step in plan["steps"]:
-          tool_name = step["tool"]
-          #tool = TOOLS[tool_name]  
+        for step in investigation.plan.steps:
+          tool_name = step.tool 
           tool = registry.get(tool_name)
           if tool is None:
             evidence.append({
@@ -28,7 +28,7 @@ class Executor:
           try:  
               args=inspect.signature(tool.function)
               #print(args)
-              arguments = step.get("arguments", {})
+              arguments = step.arguments
               validate(tool, arguments)
               result = tool.function(context=investigation.context,**arguments)
               
@@ -42,7 +42,7 @@ class Executor:
           evidence.append(
               {     
                   "tool": tool.name,      
-                  "purpose": step["purpose"],   
+                  "purpose": step.purpose,   
                   "status": status,
                   "result": result,
                   "execution_time": round(duration, 3)
