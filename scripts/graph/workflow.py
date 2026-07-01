@@ -7,33 +7,22 @@ from scripts.graph.nodes import (
     executor_node
 )
 
-workflow = StateGraph(AgentState)
+def create_graph(planner, executor):
 
-workflow.add_node(
-    "planner",
-    planner_node
-)
+    workflow = StateGraph(AgentState)
 
-workflow.add_node(
-    "executor",
-    executor_node
-)
+    workflow.add_node(
+        "planner",
+        lambda state: planner_node(state, planner)
+    )
 
-from langgraph.graph import START, END
+    workflow.add_node(
+        "executor",
+        lambda state: executor_node(state, executor)
+    )
 
-workflow.add_edge(
-    START,
-    "planner"
-)
+    workflow.add_edge(START, "planner")
+    workflow.add_edge("planner", "executor")
+    workflow.add_edge("executor", END)
 
-workflow.add_edge(
-    "planner",
-    "executor"
-)
-
-workflow.add_edge(
-    "executor",
-    END
-)
-
-graph = workflow.compile()
+    return workflow.compile()
