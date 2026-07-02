@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from scripts.core.context import ExecutionContext
 from scripts.core.plan import Plan
+from scripts.core.status import InvestigationStatus
 
 @dataclass
 class Investigation:
@@ -11,7 +12,7 @@ class Investigation:
 
     context: ExecutionContext | None = None
 
-    status: str = "CREATED"
+    status: InvestigationStatus | None = None
 
     results: list = field(default_factory=list)
 

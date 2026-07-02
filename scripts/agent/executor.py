@@ -4,6 +4,7 @@ from scripts.tools.registry import registry
 import time
 from scripts.core.context import ExecutionContext
 from scripts.core.plan import (PlanStep,Plan)
+from scripts.core.status import InvestigationStatus
 
 class Executor:
     def execute(self, investigation):
@@ -12,7 +13,7 @@ class Executor:
             question=investigation.question
         )
         
-        investigation.status = "RUNNING"
+        investigation.status = InvestigationStatus.RUNNING
         for step in investigation.plan.steps:
           tool_name = step.tool 
           tool = registry.get(tool_name)
@@ -49,5 +50,5 @@ class Executor:
               }
           )
         investigation.results.append(evidence)
-        investigation.status = "COMPLETED"
+        investigation.status = InvestigationStatus.COMPLETED
         return #evidence

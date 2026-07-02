@@ -5,6 +5,7 @@ from scripts.config import (
     MODEL_NAME
 )
 from scripts.core.plan import (PlanStep,Plan)
+from scripts.core.status import InvestigationStatus
 
 client = genai.Client(api_key=get_gemini_key())
 
@@ -90,6 +91,6 @@ Return ONLY JSON in this format:
 
 
 
-        investigation.status = "PLANNED"
+        investigation.status = InvestigationStatus.PLANNED
 
         return investigation
