@@ -1,18 +1,24 @@
 import json
 
-from langchain_core.output_parsers import JsonOutputParser
+from langchain_core.output_parsers import PydanticOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 from scripts.config import get_gemini_key, MODEL_NAME
-from scripts.core.plan import PlanStep, Plan
+from scripts.core.plan import Plan, PlanStep
+from scripts.core.planner_schema import PlannerResponse
 from scripts.core.status import InvestigationStatus
+from scripts.tools.validator import validate
 
 
 class Planner:
 
     def __init__(self, registry):
         self.registry = registry
+
+        self.parser = PydanticOutputParser(
+            pydantic_object=PlannerResponse
+        )
 
         self.prompt = ChatPromptTemplate.from_messages([
             (
@@ -21,32 +27,25 @@ class Planner:
                 You are an IAM Investigation Planner.
 
                 Create an investigation plan only.
-                Never answer the user's question.
+                Never execute tools or answer the investigation question.
 
-                Use only tools listed in the user message.
-                Return a JSON object with these keys:
-                - investigation: a string describing the goal
-                - steps: a list of plan steps
+                Use only tools listed in the supplied tool catalogue.
+                Use the exact registered tool names.
+                Return the response in the required schema format.
 
-                Each step must contain:
-                - tool: registered tool name
-                - purpose: why the tool is needed
-                - description: what it should do
-                - arguments: a JSON object of tool arguments
-
-                Do not include markdown fences.
+                {format_instructions}
                 """
             ),
             (
                 "human",
                 """
-                Question:
+                Investigation question:
                 {question}
 
                 Available tools:
                 {available_tools}
                 """
-            )
+            ),
         ])
 
         self.model = ChatGoogleGenerativeAI(
@@ -55,53 +54,54 @@ class Planner:
             temperature=0,
         )
 
-        self.parser = JsonOutputParser()
-
-        # LCEL: connect prompt, model, and parser.
         self.chain = self.prompt | self.model | self.parser
 
     def create_plan(self, investigation):
         available_tools = self.registry.list_for_planner()
 
+        # Step 1: Ask the model for a schema-conforming response.
         planner_output = self.chain.invoke({
             "question": investigation.question,
             "available_tools": json.dumps(
                 available_tools,
                 indent=2
             ),
+            "format_instructions":
+                self.parser.get_format_instructions(),
         })
 
-        # Validate the basic response shape before building domain objects.
-        if not isinstance(planner_output, dict):
-            raise ValueError("Planner output must be a JSON object.")
-
-        if not isinstance(planner_output.get("steps"), list):
-            raise ValueError("Planner output must contain a steps list.")
-
+        # Step 2: Validate each proposed tool and its arguments.
         steps = []
 
-        for step in planner_output["steps"]:
-            if not isinstance(step, dict):
-                raise ValueError("Each plan step must be a JSON object.")
+        for proposed_step in planner_output.steps:
+            tool = self.registry.get(proposed_step.tool)
 
-            arguments = step.get("arguments", {})
-
-            if not isinstance(arguments, dict):
+            if tool is None:
                 raise ValueError(
-                    "Each plan step's arguments must be a JSON object."
+                    f"Planner returned unknown tool: "
+                    f"{proposed_step.tool}"
                 )
+
+            try:
+                validate(tool, proposed_step.arguments)
+            except Exception as exc:
+                raise ValueError(
+                    f"Invalid arguments for tool "
+                    f"'{proposed_step.tool}': {exc}"
+                ) from exc
 
             steps.append(
                 PlanStep(
-                    tool=step["tool"],
-                    purpose=step["purpose"],
-                    description=step["description"],
-                    arguments=arguments,
+                    tool=proposed_step.tool,
+                    purpose=proposed_step.purpose,
+                    description=proposed_step.description,
+                    arguments=proposed_step.arguments,
                 )
             )
 
+        # Step 3: Mutate the investigation only after validation passes.
         investigation.plan = Plan(
-            goal=planner_output["investigation"],
+            goal=planner_output.investigation,
             steps=steps,
         )
 

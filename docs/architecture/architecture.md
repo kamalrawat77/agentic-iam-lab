@@ -276,3 +276,63 @@ Use these as a backlog for future lessons. Do not try to refactor everything at 
 - **The Application** wires the components together.
 
 Keep these responsibilities separate as the project grows.
+
+## 5A. Planner Response Contract and Validation
+
+The Planner now has two validation layers before it creates the application's domain `Plan`.
+
+### Layer 1 — Response schema
+
+**File:** `scripts/core/planner_schema.py`
+
+- `PlannedStepOutput` defines the required fields for each generated step.
+- `PlannerResponse` defines the overall response structure.
+- `PydanticOutputParser` parses the model response and validates it against these Pydantic models.
+
+This checks structural requirements such as required fields and field types. It does not prove that the model's proposed actions are correct.
+
+### Layer 2 — Registry and argument validation
+
+**File:** `scripts/agent/planner.py`
+
+After parsing, the Planner:
+
+1. Resolves every proposed tool through `registry.get()`.
+2. Rejects unknown tool names.
+3. Calls `scripts.tools.validator.validate()` to check required arguments, unknown arguments, and supported types.
+4. Creates `PlanStep` objects only after all proposed steps pass validation.
+5. Updates the investigation's plan and status to `PLANNED`.
+
+The graph's planner node must finish successfully before the executor node can run in the current linear workflow.
+
+### Updated planning flow
+
+```text
+Question + Tool Catalogue
+          |
+          v
+    LangChain Chain
+  Prompt -> Gemini -> Parser
+          |
+          v
+   Pydantic Schema Check
+          |
+          v
+   Tool Exists in Registry?
+          |
+          v
+   Arguments Pass Validator?
+          |
+          v
+     Build Domain Plan
+          |
+          v
+     Status = PLANNED
+          |
+          v
+      Executor Node
+```
+
+If parsing or validation fails, plan creation raises an error. Automatic retries, semantic plan evaluation, authorization checks, and comprehensive argument-type support are not implemented by this change.
+
+
